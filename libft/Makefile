@@ -41,13 +41,14 @@ SRCS_BONUS = ft_lstnew_bonus.c \
 	ft_lstclear_bonus.c \
 	ft_lstiter_bonus.c \
 	ft_lstmap_bonus.c \
+	ft_itoa_base_bonus.c \
 
 OBJS = ${SRCS:.c=.o}
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 NAME = libft.a
 HEADER = libft.h
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -c -I.${HEADER} 
+#CFLAGS = -Wall -Wextra -Werror -c -I.${HEADER} 
 
 all : ${NAME}	
 

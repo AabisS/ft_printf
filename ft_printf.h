@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:02:35 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/08 15:46:26 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/11 16:55:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ void	initialize_all(t_type *str);
 int		find_flags(char *format, t_type *str);
 void	find_conversion(t_type *str, char *format);
 void	conv_for_d(t_type *str);
+void    conv_for_s(t_type *str);
+void    conv_for_x(t_type *str);
+void    conv_for_X(t_type *str);
 
 #endif

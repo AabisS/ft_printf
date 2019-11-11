@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:05:25 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/08 13:40:31 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/11 17:25:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ int	ft_printf(char *format, ...)
 		}
 		ft_putchar_fd(format[i], 1);
 	}
+	return (i);
 }

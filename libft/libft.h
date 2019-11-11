@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saich <saich@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 10:52:15 by saich             #+#    #+#             */
-/*   Updated: 2019/10/25 10:27:22 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/11 17:02:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_list
 }				t_list;
 
 size_t			ft_strlen(const char *s);
+char			*ft_itoa_base(int nbr, char *base);
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);

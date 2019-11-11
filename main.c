@@ -4,7 +4,7 @@
 int main(void)
 {
 	int nombre = 42000;
-	int nbr = -42;
+	int nbr = 45226987;
 	char test[] = "Coucou";
 	char car = 'f';
 	void	*p = &nbr;
@@ -23,8 +23,8 @@ int main(void)
 	//i = ft_printf("%-*.*d\n", 30, 16, nbr);
 	//j = printf("%-*.*d\n", 30, 16, nbr);
 	
-	ft_printf("%*.*d\n", 15, 5, -42);
-	printf("%*.*d\n", 15, 5, -42);
+	ft_printf("%*.*X\n", -15, 10, nbr);
+	printf("%*.*X\n", -15, 10, nbr);
 	
 	printf("\nMon ft_printf return : %d\n", i);
 	printf("le printf return : %d\n", j);

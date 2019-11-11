@@ -3,6 +3,9 @@ SRCS = ft_printf.c \
        find_flags.c \
        find_conversion.c \
        conv_for_d.c \
+       conv_for_s.c \
+       conv_for_x.c \
+       conv_for_xx.c \
 
 OBJS = ${SRCS:%.c=%.o}
 NAME = libftprintf.a
