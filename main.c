@@ -23,8 +23,8 @@ int main(void)
 	//i = ft_printf("%-*.*d\n", 30, 16, nbr);
 	//j = printf("%-*.*d\n", 30, 16, nbr);
 	
-	ft_printf("%*.*x\n", 30, 0, 0);
-	printf("%*.*x\n", 30, 0, 0);
+	ft_printf("%*.*p\n", 30, 10, p);
+	printf("%*.*p\n", 30, 10, p);
 	
 	printf("\nMon ft_printf return : %d\n", i);
 	printf("le printf return : %d\n", j);
