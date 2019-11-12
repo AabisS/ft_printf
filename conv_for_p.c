@@ -113,7 +113,6 @@ void    conv_for_p(t_type *str)
 		str->second = ft_strlen(str->sentence);
 	if (str->fdot && !str->second)
 	{
-		str->sentence = ft_strdup(" ");
 		str->fdot = 0;
 		str->fzero = 0;
 	}
