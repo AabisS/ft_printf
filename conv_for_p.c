@@ -1,35 +1,19 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   conv_for_d.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/12 15:53:09 by fmarckma         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_printf.h"
 #include "./libft/libft.h"
 
-void	print_for_d_i(t_type *str)
+void	print_for_p(t_type *str)
 {
 	int tmp;
 	int tmp2;
 	
-	//printf("first : %d\n", str->first);
-	//printf("second : %d\n", str->second);
-	//si largeur et non precision
 	tmp = 0;
 	tmp2 = 0;
 	if (str->first && !str->second && !str->fzero)
 	{	
-		tmp = str->first - ft_strlen(str->sentence);
+		tmp = str->first - (ft_strlen(str->sentence) + 2);
 		if (str->fless)
 		{
-			if (str->d_i < 0)
-				ft_putchar_fd('-', 1);
+			ft_putstr_fd("0x", 1);
 			ft_putstr_fd(str->sentence, 1);
 			if (tmp > 0)
 				while (tmp--)
@@ -41,8 +25,7 @@ void	print_for_d_i(t_type *str)
 			if (tmp > 0)
 				while (tmp--)
 					ft_putchar_fd(' ', 1);
-			if (str->d_i < 0)
-				ft_putchar_fd('-', 1);
+			ft_putstr_fd("0x", 1);
 			ft_putstr_fd(str->sentence, 1);
 		}
 	}
@@ -52,11 +35,13 @@ void	print_for_d_i(t_type *str)
 		tmp = str->second - ft_strlen(str->sentence);
 		if (tmp > 0 && !str->fless)
 		{	
-			if (str->d_i < 0)
-				ft_putchar_fd('-', 1);
+			ft_putstr_fd("0x", 1);
 			while (tmp--)
 				ft_putchar_fd('0', 1);
+			tmp = -1;
 		}
+		else if (tmp != -1)
+			ft_putstr_fd("0x", 1);
 		ft_putstr_fd(str->sentence, 1);
 	}
 	else if (str->first && str->fzero && !str->second)
@@ -64,29 +49,33 @@ void	print_for_d_i(t_type *str)
 		tmp = str->first - ft_strlen(str->sentence);
 		if (tmp > 0 && !str->fless)
 		{	
-			if (str->d_i < 0)
-				ft_putchar_fd('-', 1);
+			ft_putstr_fd("0x", 1);
 			while (tmp--)
 				ft_putchar_fd('0', 1);
+			tmp = -1;
 		}
+		else if (tmp != -1)
+			ft_putstr_fd("0x", 1);
 		ft_putstr_fd(str->sentence, 1);
 	}
 	if (str->first && str->second && str->fdot)
 	{
 		if (str->second > ft_strlen(str->sentence))
-			tmp = str->first - str->second;
+			tmp = str->first - str->second - 2;
 		else
-			tmp = str->first - ft_strlen(str->sentence);
+			tmp = str->first - ft_strlen(str->sentence) - 2;
 		tmp2 = str->second - ft_strlen(str->sentence);
 		if (str->fless)
 		{
 			if (tmp2 > 0)
 			{	
-				if (str->d_i < 0)
-					ft_putchar_fd('-', 1);
+				ft_putstr_fd("0x", 1);
 				while (tmp2--)
 					ft_putchar_fd('0', 1);
+				tmp2 = -1;
 			}
+			else if (tmp2 != -1)
+				ft_putstr_fd("0x", 1);
 			ft_putstr_fd(str->sentence, 1);
 			if (tmp > 0)
 				while (tmp--)
@@ -99,25 +88,30 @@ void	print_for_d_i(t_type *str)
 					ft_putchar_fd(' ', 1);
 			if (tmp2 > 0)
 			{	
-				if (str->d_i < 0)
-					ft_putchar_fd('-', 1);
+				ft_putstr_fd("0x", 1);
 				while (tmp2--)
 					ft_putchar_fd('0', 1);
+				tmp2 = -1;
 			}
+			else if (tmp2 != -1)
+				ft_putstr_fd("0x", 1);
 			ft_putstr_fd(str->sentence, 1);
 		}
 	}
-	if (!str->first && !str->second)
+	if (!str->first && !str->second && !str->fdot)
+	{
+		ft_putstr_fd("0x", 1);
 		ft_putstr_fd(str->sentence, 1);
+	}
 }
 
-void	conv_for_d(t_type *str)
+void    conv_for_p(t_type *str)
 {
-	str->d_i = va_arg(str->ap, int);
+	str->p = va_arg(str->ap, void *);
+	str->sentence = ft_uitoa_base((uintmax_t)str->p, 16,  "0123456789abcdef");
 	if (str->second < 0)
-		str->second = 0;
-	str->sentence = ft_itoa(str->d_i);
-	if (str->fdot && !str->second && str->remember && !str->d_i)
+		str->second = ft_strlen(str->sentence);
+	if (str->fdot && !str->second)
 	{
 		str->sentence = ft_strdup(" ");
 		str->fdot = 0;
@@ -129,5 +123,5 @@ void	conv_for_d(t_type *str)
 		if (str->fdot || str->fzero)
 			str->first--;
 	}
-	print_for_d_i(str);
+	print_for_p(str);
 }

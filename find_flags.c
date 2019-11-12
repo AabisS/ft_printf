@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:10:41 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/11 16:28:04 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/12 15:25:25 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,14 @@ int	find_flags(char *format, t_type *str)
 		str->second = ft_atoi(&format[i]);
 		i += ft_strlen(ft_itoa(str->second));
 	}
-	else if (format[i] == '*')
+	if (format[i] == '0')
+		i++;
+	if (format[i] == '*')
 	{
 		str->second = va_arg(str->ap, int);
 		i++;
 	}
+	if ((str->fzero || str->fdot) && !str->second)
+		str->remember = 1;
 	return (i);
 }

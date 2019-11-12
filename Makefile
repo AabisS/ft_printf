@@ -4,8 +4,12 @@ SRCS = ft_printf.c \
        find_conversion.c \
        conv_for_d.c \
        conv_for_s.c \
+       conv_for_c.c \
        conv_for_x.c \
+       conv_for_pourcentage.c \
        conv_for_xx.c \
+       conv_for_p.c \
+       conv_for_u.c \
 
 OBJS = ${SRCS:%.c=%.o}
 NAME = libftprintf.a
@@ -22,7 +26,7 @@ clean :
 fclean : clean
 		 rm -f ${NAME}
 
-$(NAME) : ${OBJS} ${HEADER} $(HEADER2)
+$(NAME) : ${OBJS} ${HEADER2} $(HEADER)
 		  ar rc ${NAME} ${OBJS}
 		  ranlib ${NAME}
 

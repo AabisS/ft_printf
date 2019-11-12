@@ -7,7 +7,7 @@ int		main(void)
 	char	*str;
 	str = "yoyo";
 	//printf("   printf = \"%x\"\n\n", -42);
-	//ft_printf("ft_printf = \"%x\"\n\n", -42);
+	//	ft_printf("ft_printf = \"%x\"\n\n", -42);
 	ft_printf("2:\n");
 	ft_printf("ft_printf = \"%.10d\"\n", 4242);
 	printf("   printf = \"%.10d\"\n\n", 4242);
@@ -111,8 +111,8 @@ int		main(void)
 	ft_printf("ft_printf = \"%.0%\"\n");
 	printf("   printf = \"%.0%\"\n\n");
 	ft_printf("36:\n");
-	ft_printf("ft_printf = \"%5.x\"\n", 42);
-	printf("   printf = \"%5.x\"\n\n", 42);
+	ft_printf("ft_printf = \"%5.X\"\n", 42);
+	printf("   printf = \"%5.X\"\n\n", 42);
 	ft_printf("37:\n");
 	ft_printf("ft_printf = \"%5.0x\"\n", 42);
 	printf("   printf = \"%5.0x\"\n\n", 42);

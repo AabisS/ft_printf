@@ -18,9 +18,8 @@ void	print_for_x(t_type *str)
 	int tmp;
 	int tmp2;
 	
-	//printf("first : %d\n", str->first);
-	//printf("second : %d\n", str->second);
-	//si largeur et non precision
+	tmp = 0;
+	tmp2 = 0;
 	if (str->first && !str->second && !str->fzero)
 	{	
 		tmp = str->first - ft_strlen(str->sentence);
@@ -73,6 +72,8 @@ void	print_for_x(t_type *str)
 	{
 		if (str->second > ft_strlen(str->sentence))
 			tmp = str->first - str->second;
+		else
+			tmp = str->first - ft_strlen(str->sentence);
 		tmp2 = str->second - ft_strlen(str->sentence);
 		if (str->fless)
 		{
@@ -103,6 +104,8 @@ void	print_for_x(t_type *str)
 			ft_putstr_fd(str->sentence, 1);
 		}
 	}
+	if (!str->first && !str->second)
+		ft_putstr_fd(str->sentence, 1);
 }
 
 void	conv_for_x(t_type *str)
@@ -110,7 +113,16 @@ void	conv_for_x(t_type *str)
 	str->d_i = va_arg(str->ap, int);
 	if (str->second < 0)
 		str->second = 0;
-	str->sentence = ft_itoa_base(str->d_i, "0123456789abcdef");
+	if (!str->d_i)
+		str->sentence = ft_strdup("0");
+	else
+		str->sentence = ft_itoa_base(str->d_i, "0123456789abcdef");
+	if (str->fdot && !str->second && str->remember && !str->d_i)
+	{
+		str->sentence = ft_strdup(" ");
+		str->fdot = 0;
+		str->fzero = 0;
+	}
 	if (str->sentence[0] == '-')
 	{
 		str->sentence = &str->sentence[1];

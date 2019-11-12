@@ -42,6 +42,8 @@ SRCS_BONUS = ft_lstnew_bonus.c \
 	ft_lstiter_bonus.c \
 	ft_lstmap_bonus.c \
 	ft_itoa_base_bonus.c \
+	ft_strcpy_bonus.c \
+	ft_uitoa_base_bonus.c \
 
 OBJS = ${SRCS:.c=.o}
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}

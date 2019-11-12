@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_gestionnary.c                               :+:      :+:    :+:   */
+/*   ft_strcpy_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 11:15:28 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/12 13:30:59 by fmarckma         ###   ########.fr       */
+/*   Created: 2019/11/12 12:56:10 by fmarckma          #+#    #+#             */
+/*   Updated: 2019/11/12 12:56:21 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "./libft/libft.h"
+#include "libft.h"
 
-void	initialize_all(t_type *str)
+char	*ft_strcpy(char *dst, char const *src)
 {
-	str->fdot = 0;
-	str->fless = 0;
-	str->fzero = 0;
-	str->fstar = 0;
-	str->first = 0;
-	str->second = 0;
-	str->remember = 0;
-	str->d_i = 0;
-	str->sentence = NULL;
-	str->car = 0;
-	str->p = NULL;
-	str->u_d = 0;
+	int i;
+
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
 }

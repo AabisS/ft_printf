@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_conversion.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:45:59 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/11 17:06:03 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/12 13:32:09 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	find_conversion(t_type *str, char *format)
 		conv_for_x(str);
 	else if (format[0] == 'X')
 		conv_for_X(str);
-	//else if (format[0] == 'c')
-	//	conv_for_c(str);
-	//else if (format[0] == 'p')
-	//	conv_for_p(str);
-	//else if (format[0] == 'u')
-	//	conv_for_u(str);
-	//else if (format[0] == '%')
-	//	conv_for_pourcentage(str);
+	else if (format[0] == 'c')
+		conv_for_c(str);
+	else if (format[0] == '%')
+		conv_for_pourcentage(str);
+	else if (format[0] == 'p')
+		conv_for_p(str);
+	else if (format[0] == 'u')
+		conv_for_u(str);
 }
