@@ -60,8 +60,8 @@ clean :
 fclean : clean
 		 rm -f ${NAME}
 
-$(NAME) : ${OBJS} ${HEADER}
-		  ar rc ${NAME} ${OBJS}
+$(NAME) : ${OBJS} ${HEADER} ${OBJS_BONUS}
+		  ar rc ${NAME} ${OBJS} ${OBJS_BONUS}
 		  ranlib ${NAME}
 
 re : fclean all
@@ -70,4 +70,4 @@ bonus : ${OBJS} ${OBJS_BONUS} ${HEADER}
 		ar rc ${NAME} ${OBJS} ${OBJS_BONUS}
 		ranlib ${NAME}
 
-.PHONY : all clean re fclean
+.PHONY : all clean re fclean 

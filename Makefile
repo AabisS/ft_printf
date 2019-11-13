@@ -27,10 +27,10 @@ clean :
 		rm -f ${OBJS} $(FT_INC)
 
 fclean : clean
-		 rm -f ${NAME}
+		 rm -f ${NAME} $(FT_LNK)
 
 lib :
-	      make bonus -C $(FT)
+	      make -C $(FT)
 
 $(NAME) : ${OBJS} ${HEADER2} $(HEADER) $(FT_LNK)
 		  ar rc ${NAME} ${OBJS} $(FT_INC)
