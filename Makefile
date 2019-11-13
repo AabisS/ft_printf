@@ -16,18 +16,24 @@ NAME = libftprintf.a
 HEADER = ft_printf.h 
 HEADER2 = ./libft/libft.h 
 CC = gcc
-CFLAGS = -c -I.${HEADER} 
+CFLAGS = -c -I.${HEADER}
+FT		= ./libft/
+FT_INC	= ./libft/*.o
+FT_LNK	= ./libft/libft.a
 
-all : ${NAME}	
+all : lib ${NAME} 
 
 clean : 
-		rm -f ${OBJS}
+		rm -f ${OBJS} $(FT_INC)
 
 fclean : clean
 		 rm -f ${NAME}
 
-$(NAME) : ${OBJS} ${HEADER2} $(HEADER)
-		  ar rc ${NAME} ${OBJS}
+lib :
+	      make bonus -C $(FT)
+
+$(NAME) : ${OBJS} ${HEADER2} $(HEADER) $(FT_LNK)
+		  ar rc ${NAME} ${OBJS} $(FT_INC)
 		  ranlib ${NAME}
 
 re : fclean all

@@ -26,21 +26,21 @@ void	print_for_X(t_type *str)
 		if (str->fless)
 		{
 			if (str->d_i < 0)
-				ft_putchar_fd('-', 1);
-			ft_putstr_fd(str->sentence, 1);
+				ft_putchar_fd('-', 1, str);
+			ft_putstr_fd(str->sentence, 1, str);
 			if (tmp > 0)
 				while (tmp--)
-					ft_putchar_fd(' ', 1);
+					ft_putchar_fd(' ', 1, str);
 		}
 		//pour largeur positif
 		if (!str->fless)
 		{
 			if (tmp > 0)
 				while (tmp--)
-					ft_putchar_fd(' ', 1);
+					ft_putchar_fd(' ', 1, str);
 			if (str->d_i < 0)
-				ft_putchar_fd('-', 1);
-			ft_putstr_fd(str->sentence, 1);
+				ft_putchar_fd('-', 1, str);
+			ft_putstr_fd(str->sentence, 1, str);
 		}
 	}
 	// si precision mais pas largeur
@@ -50,11 +50,11 @@ void	print_for_X(t_type *str)
 		if (tmp > 0 && !str->fless)
 		{	
 			if (str->d_i < 0)
-				ft_putchar_fd('-', 1);
+				ft_putchar_fd('-', 1, str);
 			while (tmp--)
-				ft_putchar_fd('0', 1);
+				ft_putchar_fd('0', 1, str);
 		}
-		ft_putstr_fd(str->sentence, 1);
+		ft_putstr_fd(str->sentence, 1, str);
 	}
 	else if (str->first && str->fzero && !str->second)
 	{
@@ -62,11 +62,11 @@ void	print_for_X(t_type *str)
 		if (tmp > 0 && !str->fless)
 		{	
 			if (str->d_i < 0)
-				ft_putchar_fd('-', 1);
+				ft_putchar_fd('-', 1, str);
 			while (tmp--)
-				ft_putchar_fd('0', 1);
+				ft_putchar_fd('0', 1, str);
 		}
-		ft_putstr_fd(str->sentence, 1);
+		ft_putstr_fd(str->sentence, 1, str);
 	}
 	if (str->first && str->second && str->fdot)
 	{
@@ -80,32 +80,32 @@ void	print_for_X(t_type *str)
 			if (tmp2 > 0)
 			{	
 				if (str->d_i < 0)
-					ft_putchar_fd('-', 1);
+					ft_putchar_fd('-', 1, str);
 				while (tmp2--)
-					ft_putchar_fd('0', 1);
+					ft_putchar_fd('0', 1, str);
 			}
-			ft_putstr_fd(str->sentence, 1);
+			ft_putstr_fd(str->sentence, 1, str);
 			if (tmp > 0)
 				while (tmp--)
-					ft_putchar_fd(' ', 1);
+					ft_putchar_fd(' ', 1, str);
 		}
 		else if (!str->fless)
 		{
 			if (tmp > 0)
 				while (tmp--)
-					ft_putchar_fd(' ', 1);
+					ft_putchar_fd(' ', 1, str);
 			if (tmp2 > 0)
 			{	
 				if (str->d_i < 0)
-					ft_putchar_fd('-', 1);
+					ft_putchar_fd('-', 1, str);
 				while (tmp2--)
-					ft_putchar_fd('0', 1);
+					ft_putchar_fd('0', 1, str);
 			}
-			ft_putstr_fd(str->sentence, 1);
+			ft_putstr_fd(str->sentence, 1, str);
 		}
 	}
 	if (!str->first && !str->second)
-		ft_putstr_fd(str->sentence, 1);
+		ft_putstr_fd(str->sentence, 1, str);
 }
 
 void	conv_for_X(t_type *str)

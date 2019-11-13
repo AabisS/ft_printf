@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 10:52:15 by saich             #+#    #+#             */
-/*   Updated: 2019/11/12 12:57:09 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/13 13:23:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# include "../ft_printf.h"
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -31,10 +32,10 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char *s, int fd);
-void			ft_putendl_fd(char *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
+void			ft_putchar_fd(char c, int fd, t_type *str);
+void			ft_putstr_fd(char *s, int fd, t_type *str);
+void			ft_putendl_fd(char *s, int fd, t_type *str);
+void			ft_putnbr_fd(int n, int fd, t_type *str);
 int				ft_atoi(const char *str);
 void			*ft_bzero (void *s, size_t n);
 int				ft_isalnum(int c);
@@ -70,6 +71,6 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 void (*del)(void *));
 void			p_list(t_list *list);
 char			*ft_strcpy(char *dst, char const *src);
-char			*ft_uitoa_base(uintmax_t n,  int baselen, char *base);
+char			*ft_uitoa_base(__uintmax_t n,  int baselen, char *base);
 
 #endif

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_uitoa_base_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 17:35:44 by vsteyaer          #+#    #+#             */
-/*   Updated: 2019/11/05 09:08:13 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/13 12:28:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "libft.h"
 
-static int		ft_digitlen_base(uintmax_t n, int baselen)
+static int		ft_digitlen_base(__uintmax_t n, int baselen)
 {
-	uintmax_t	ret;
+	__uintmax_t	ret;
 
 	ret = 0;
 	while (n != 0)
@@ -26,10 +26,10 @@ static int		ft_digitlen_base(uintmax_t n, int baselen)
 	return (ret);
 }
 
-char			*ft_uitoa_base(uintmax_t n, int baselen, char *base)
+char			*ft_uitoa_base(__uintmax_t n, int baselen, char *base)
 {
-	uintmax_t		len;
-	uintmax_t		i;
+	__uintmax_t		len;
+	__uintmax_t		i;
 	char			*str;
 
 	i = 0;

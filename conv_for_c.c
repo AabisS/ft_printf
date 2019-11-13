@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_for_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 11:30:39 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/12 11:48:08 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/13 13:26:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@ void    print_for_c(t_type *str)
 		tmp = str->first - 1;
 		if (str->fless)
 		{
-			ft_putchar_fd(str->car, 1);
+			ft_putchar_fd(str->car, 1, str);
 			if (tmp > 0)
 				while (tmp--)
-					ft_putchar_fd(' ', 1);
+					ft_putchar_fd(' ', 1, str);
 		}
 		if (!str->fless)
 		{
 			if (tmp > 0)
 				while (tmp--)
-					ft_putchar_fd(' ', 1);
-			ft_putchar_fd(str->car, 1);
+					ft_putchar_fd(' ', 1, str);
+			ft_putchar_fd(str->car, 1, str);
 		}
 	}
 	else if (!str->fless && !str->fzero && !str->fstar && !str->fdot)
-		ft_putchar_fd(str->car, 1);
+		ft_putchar_fd(str->car, 1, str);
 }
 void    conv_for_c(t_type *str)
 {

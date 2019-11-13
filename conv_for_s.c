@@ -13,17 +13,17 @@ void    print_for_s(t_type *str)
 		tmp = str->first - ft_strlen(str->sentence);
 		if (str->fless)
 		{
-			ft_putstr_fd(str->sentence, 1);
+			ft_putstr_fd(str->sentence, 1, str);
 			if (tmp > 0)
 				while (tmp--)
-					ft_putchar_fd(' ', 1);
+					ft_putchar_fd(' ', 1, str);
 		}
 		else if (!str->fless)
 		{
 			if (tmp > 0)
 				while (tmp--)
-					ft_putchar_fd(' ', 1);
-			ft_putstr_fd(str->sentence, 1);
+					ft_putchar_fd(' ', 1, str);
+			ft_putstr_fd(str->sentence, 1, str);
 		}
 	}
     if (!str->first && str->fdot && str->second)
@@ -32,7 +32,7 @@ void    print_for_s(t_type *str)
 		if (tmp > 0 && !str->fless)
 		{	
 			while (tmp--)
-				ft_putchar_fd(str->sentence[i++], 1);
+				ft_putchar_fd(str->sentence[i++], 1, str);
 		}
 	}
     if (str->first && str->second && str->fdot)
@@ -42,26 +42,26 @@ void    print_for_s(t_type *str)
             tmp = str->second;
 			if (tmp > 0)
                 while (tmp--)
-                    ft_putchar_fd(str->sentence[i++], 1);
+                    ft_putchar_fd(str->sentence[i++], 1, str);
             tmp = str->first - str->second;
 			if (tmp > 0)
 				while (tmp--)
-					ft_putchar_fd(' ', 1);
+					ft_putchar_fd(' ', 1, str);
 		}
 		else if (!str->fless)
 		{
 			tmp = str->first - str->second;
 			if (tmp > 0)
 				while (tmp--)
-					ft_putchar_fd(' ', 1);
+					ft_putchar_fd(' ', 1, str);
 			tmp = str->second;
 			if (tmp > 0)
 				while (tmp--)
-					ft_putchar_fd(str->sentence[i++], 1);
+					ft_putchar_fd(str->sentence[i++], 1, str);
 		}
 	}
 	else if (!str->first && !str->second && !str->fdot)
-		ft_putstr_fd(str->sentence, 1);
+		ft_putstr_fd(str->sentence, 1, str);
 }
 
 void    conv_for_s(t_type *str)
