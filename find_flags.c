@@ -6,47 +6,47 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:10:41 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/12 15:25:25 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/15 14:24:05 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "./libft/libft.h"
 
-int	find_flags(char *format, t_type *str)
+int	is_charset(char *charset, char c)
 {
 	int i;
 
 	i = 0;
-	if (format[i] == '-')
+	while (charset[i])
+		if (charset[i++] == c)
+			return (1);
+	return (0);
+}
+
+int	find_flags(char *format, t_type *str)
+{
+	int i;
+	char *charset;
+
+	i = 0;
+	while (format[i] == '-' || format[i] == '0')
 	{
-		str->fless = 1;
-		while (format[i] == '-')
-		{
-			if (format[i + 1] == '.')
-				str->fless = 0;
-			i++;
-		}
+		if (format[i] == '-')
+			str->fless = 1;
+		if (format[i] == '0')
+			str->fzero = 1;
+		i++;
 	}
-	if (format[i] == '0')
-	{
-		str->fzero = 1;
-		while (format[i] == '0')
-			i++;
-	}
-	if (format[i] >= '1' && format[i] <= '9')
+	if (ft_isdigit(format[i]))
 	{
 		str->first = ft_atoi(&format[i]);
-		i += ft_strlen(ft_itoa(str->first));
+		while (ft_isdigit(format[i]))
+			i++;
 	}
 	else if (format[i] == '*')
 	{
 		str->first = va_arg(str->ap, int);
-		if (str->first < 0)
-		{
-			str->fless = 1;
-			str->first *= -1;
-		}
 		i++;
 	}
 	if (format[i] == '.')
@@ -54,19 +54,16 @@ int	find_flags(char *format, t_type *str)
 		str->fdot = 1;
 		i++;
 	}
-	if (format[i] >= '1' && format[i] <= '9')
+	if (ft_isdigit(format[i]))
 	{
 		str->second = ft_atoi(&format[i]);
-		i += ft_strlen(ft_itoa(str->second));
+		while (ft_isdigit(format[i]))
+			i++;
 	}
-	if (format[i] == '0')
-		i++;
-	if (format[i] == '*')
+	else if (format[i] == '*')
 	{
 		str->second = va_arg(str->ap, int);
 		i++;
 	}
-	if ((str->fzero || str->fdot) && !str->second)
-		str->remember = 1;
 	return (i);
 }

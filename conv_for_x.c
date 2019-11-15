@@ -47,7 +47,7 @@ void	print_for_x(t_type *str)
 	if (!str->first && (str->fdot || str->fzero) && str->second)
 	{
 		tmp = str->second - ft_strlen(str->sentence);
-		if (tmp > 0 && !str->fless)
+		if (tmp > 0)
 		{	
 			if (str->d_i < 0)
 				ft_putchar_fd('-', 1, str);

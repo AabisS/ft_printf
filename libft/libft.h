@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 10:52:15 by saich             #+#    #+#             */
-/*   Updated: 2019/11/13 13:23:33 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/15 10:54:49 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 void (*del)(void *));
 void			p_list(t_list *list);
 char			*ft_strcpy(char *dst, char const *src);
-char			*ft_uitoa_base(__uintmax_t n,  int baselen, char *base);
+char			*ft_uitoa_base(uintmax_t n,  int baselen, char *base);
 
 #endif

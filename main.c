@@ -13,18 +13,18 @@ int main(void)
 	int i = 0;
 	int j = 0;
 
-	i = ft_printf("coucou je suis %10.15d une phrase%-9.8d je me call %.3s et %.5s avec un %c et 42 en hexa : %.10X et %.90u et pour l'adresse de p : %p et je test cela : %% \n", nombre, nbr, p, p, car, hexa, max, p);
+	//i = ft_printf("coucou je suis %10.15d une phrase%-9.8d je me call %.3s et %.5s avec un %c et 42 en hexa : %.10X et %.90u et pour l'adresse de p : %p et je test cela : %% \n", nombre, nbr, p, p, car, hexa, max, p);
 
-	j = printf("coucou je suis %10.15d une phrase%-9.8d je me call %.3s et %.5s avec un %c et 42 en hexa : %.10X et %.90u et pour l'adresse de p : %p et je test cela : %% \n", nombre, nbr, p, p, car, hexa, max, p);
+	//j = printf("coucou je suis %10.15d une phrase%-9.8d je me call %.3s et %.5s avec un %c et 42 en hexa : %.10X et %.90u et pour l'adresse de p : %p et je test cela : %% \n", nombre, nbr, p, p, car, hexa, max, p);
 
-	ft_printf("\nMon ft_printf return : %d\n", i);
-	ft_printf("le printf return : %d\n", j);
+	//ft_printf("\nMon ft_printf return : %d\n", i);
+	//ft_printf("le printf return : %d\n", j);
 	
-	i = ft_printf("%-*.*d\n", 30, 16, nbr);
-	j = printf("%-*.*d\n", 30, 16, nbr);
+	i = ft_printf("%10.5d\n", 0);
+	j = printf("%10.5d \n", 0);
 	
-	ft_printf("%X\n", nbr);
-	printf("%X\n", nbr);
+	//ft_printf("%X\n", nbr);
+	//printf("%X\n", nbr);
 	
 	printf("\nMon ft_printf return : %d\n", i);
 	printf("le printf return : %d\n", j);
