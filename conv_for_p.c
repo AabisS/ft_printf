@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_for_p.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 10:53:37 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/15 10:53:57 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/15 18:33:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	print_for_p(t_type *str)
 void    conv_for_p(t_type *str)
 {
 	str->p = va_arg(str->ap, void *);
-	str->sentence = ft_uitoa_base((uintmax_t)str->p, 16,  "0123456789abcdef");
+	str->sentence = ft_uitoa_base((__uintmax_t)str->p, 16,  "0123456789abcdef");
 	if (str->second < 0)
 		str->second = ft_strlen(str->sentence);
 	if (str->fdot && !str->second)

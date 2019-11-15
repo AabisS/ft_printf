@@ -20,8 +20,8 @@ int main(void)
 	//ft_printf("\nMon ft_printf return : %d\n", i);
 	//ft_printf("le printf return : %d\n", j);
 	
-	i = ft_printf("%10.5d\n", 0);
-	j = printf("%10.5d \n", 0);
+	i = ft_printf("%.d\n", 0);
+	j = printf("%.d\n", 0);
 	
 	//ft_printf("%X\n", nbr);
 	//printf("%X\n", nbr);

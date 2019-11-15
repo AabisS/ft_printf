@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_for_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/15 16:31:36 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/15 19:06:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	print_for_d_i(t_type *str)
 	{
 		if (str->d_i < 0 && str->second)
 			tmp = str->first - str->second - 1;
-		else if (str->d_i > 0 && str->second)
+		else if (str->d_i >= 0 && str->second)
 			tmp = str->first - str->second;
 		else
 			tmp = str->first - ft_strlen(ft_itoa(str->d_i));
@@ -82,7 +82,7 @@ void	print_for_d_i(t_type *str)
 			second(str);
 		}
 	}
-	else if (!str->first && !str->second)
+	else if (!str->first && !str->second && !str->fdot)
 		ft_putnbr_fd(str->d_i, 1, str);
 }
 
@@ -90,6 +90,8 @@ void	parse_flag(t_type *str)
 {
 	if (str->fless && !str->first)
 		str->fless = 0;
+	if (!str->second && !str->d_i)
+		str->sentence = ft_strdup(" ");
 	if (str->fzero && str->first && !str->second)
 	{
 		str->second = str->first;
@@ -97,9 +99,7 @@ void	parse_flag(t_type *str)
 		str->fdot = 1;
 	}
 	if (str->sentence[0] == '-')
-	{
 		str->sentence = &str->sentence[1];
-	}
 	if (str->second && str->second < ft_strlen(str->sentence))
 		str->second = ft_strlen(str->sentence);
 	if (str->second <= 0)
@@ -112,8 +112,8 @@ void	parse_flag(t_type *str)
 		str->first = -str->first;
 		str->fless = 1;
 	}
-	//printf("str first : %d\n", str->first);
-	//printf("str second : %d\n", str->second);
+	if (!str->first && !str->second && str->fdot && str->d_i)
+		str->fdot = 0;
 }
 
 void	conv_for_d(t_type *str)
