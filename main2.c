@@ -7,7 +7,7 @@ int		main(void)
 	char	*str;
 	str = "yoyo";
 	//printf("   printf = \"%x\"\n\n", -42);
-	//	ft_printf("ft_printf = \"%x\"\n\n", -42);
+	//ft_printf("ft_printf = \"%x\"\n\n", -42);
 	ft_printf("2:\n");
 	ft_printf("ft_printf = \"%.10d\"\n", 4242);
 	printf("   printf = \"%.10d\"\n\n", 4242);

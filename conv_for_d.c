@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/15 19:06:18 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/15 19:12:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	parse_flag(t_type *str)
 		str->fless = 0;
 	if (!str->second && !str->d_i)
 		str->sentence = ft_strdup(" ");
-	if (str->fzero && str->first && !str->second)
+	if (str->fzero && str->first && !str->second && !str->fdot)
 	{
 		str->second = str->first;
 		str->first = 0;
