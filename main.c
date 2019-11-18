@@ -20,11 +20,12 @@ int main(void)
 	//ft_printf("\nMon ft_printf return : %d\n", i);
 	//ft_printf("le printf return : %d\n", j);
 	
-	i = ft_printf("%.d\n", 0);
-	j = printf("%.d\n", 0);
+	i = ft_printf("%.*u", -6, 0);
+	printf("\n");
+	j = printf("%.*u", -6, 0);
 	
-	//ft_printf("%X\n", nbr);
-	//printf("%X\n", nbr);
+	//ft_printf("%0*i\n", 8, 0);
+	//printf("%0*i\n", 8, 0);
 	
 	printf("\nMon ft_printf return : %d\n", i);
 	printf("le printf return : %d\n", j);

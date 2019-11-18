@@ -13,121 +13,120 @@
 #include "ft_printf.h"
 #include "./libft/libft.h"
 
-void	print_for_X(t_type *str)
+static void	print(char c, int tmp, t_type *str)
+{
+	if (tmp > 0)
+		while (tmp--)
+			ft_putchar_fd(c, 1, str);
+}
+
+static void	second(t_type *str)
 {
 	int tmp;
-	int tmp2;
-	
-	tmp = 0;
-	tmp2 = 0;
-	if (str->first && !str->second && !str->fzero)
-	{	
-		tmp = str->first - ft_strlen(str->sentence);
-		if (str->fless)
-		{
-			if (str->d_i < 0)
-				ft_putchar_fd('-', 1, str);
-			ft_putstr_fd(str->sentence, 1, str);
-			if (tmp > 0)
-				while (tmp--)
-					ft_putchar_fd(' ', 1, str);
-		}
-		//pour largeur positif
-		if (!str->fless)
-		{
-			if (tmp > 0)
-				while (tmp--)
-					ft_putchar_fd(' ', 1, str);
-			if (str->d_i < 0)
-				ft_putchar_fd('-', 1, str);
-			ft_putstr_fd(str->sentence, 1, str);
-		}
-	}
-	// si precision mais pas largeur
-	if (!str->first && (str->fdot || str->fzero) && str->second)
-	{
+
+	if (str->fzero && str->fdot)
 		tmp = str->second - ft_strlen(str->sentence);
-		if (tmp > 0 && !str->fless)
-		{	
-			if (str->d_i < 0)
-				ft_putchar_fd('-', 1, str);
-			while (tmp--)
-				ft_putchar_fd('0', 1, str);
-		}
+	else
+		tmp = str->second - ft_strlen(str->sentence);
+	if (str->u_d < 0)
+	{
+		print('0', tmp, str);
 		ft_putstr_fd(str->sentence, 1, str);
 	}
-	else if (str->first && str->fzero && !str->second)
+	else
 	{
-		tmp = str->first - ft_strlen(str->sentence);
-		if (tmp > 0 && !str->fless)
-		{	
-			if (str->d_i < 0)
-				ft_putchar_fd('-', 1, str);
-			while (tmp--)
-				ft_putchar_fd('0', 1, str);
-		}
-		ft_putstr_fd(str->sentence, 1, str);
+		print('0', tmp, str);
+		ft_putstr_fd(str->sentence, 1, str);	
 	}
-	if (str->first && str->second && str->fdot)
+}
+
+static void	first(t_type *str)
+{
+	int tmp;
+
+	tmp = str->first - ft_strlen(str->sentence);
+	if (str->fless)
 	{
-		if (str->second > ft_strlen(str->sentence))
+		ft_putstr_fd(str->sentence, 1, str);
+		print(' ', tmp, str);
+	}
+	else
+	{
+		print(' ', tmp, str);
+		ft_putstr_fd(str->sentence, 1, str);	
+	}
+}
+
+static void	print_for_X(t_type *str)
+{
+	int tmp;
+
+	if (!str->first && str->fdot && str->second)
+		second(str);
+	else if (str->first && !str->second && !str->fdot)
+		first(str);
+	else if (str->first && str->fdot && (str->second || str->remember))
+	{
+		if (str->u_d >= 0 && str->second)
 			tmp = str->first - str->second;
 		else
 			tmp = str->first - ft_strlen(str->sentence);
-		tmp2 = str->second - ft_strlen(str->sentence);
 		if (str->fless)
 		{
-			if (tmp2 > 0)
-			{	
-				if (str->d_i < 0)
-					ft_putchar_fd('-', 1, str);
-				while (tmp2--)
-					ft_putchar_fd('0', 1, str);
-			}
-			ft_putstr_fd(str->sentence, 1, str);
-			if (tmp > 0)
-				while (tmp--)
-					ft_putchar_fd(' ', 1, str);
+			second(str);
+			str->fzero ? print('0', tmp, str) : print(' ', tmp, str);
 		}
-		else if (!str->fless)
+		else
 		{
-			if (tmp > 0)
-				while (tmp--)
-					ft_putchar_fd(' ', 1, str);
-			if (tmp2 > 0)
-			{	
-				if (str->d_i < 0)
-					ft_putchar_fd('-', 1, str);
-				while (tmp2--)
-					ft_putchar_fd('0', 1, str);
-			}
-			ft_putstr_fd(str->sentence, 1, str);
+			str->fzero ? print('0', tmp, str) : print(' ', tmp, str);
+			second(str);
 		}
 	}
-	if (!str->first && !str->second)
+	else if (!str->first && !str->second && !str->fdot)
 		ft_putstr_fd(str->sentence, 1, str);
+}
+
+static void	parse_flag(t_type *str)
+{
+	if (str->fless && !str->first)
+		str->fless = 0;
+	if (!str->second && !str->u_d && str->fdot)
+		str->sentence = ft_strdup(" ");
+	if (!str->second && !str->u_d && !str->fdot)
+		str->sentence = ft_strdup("0");
+	if (str->fzero && str->first && !str->second && !str->fdot)
+	{
+		str->second = str->first;
+		str->first = 0;
+		str->fdot = 1;
+	}
+	if (str->second && str->second < ft_strlen(str->sentence))
+		str->second = ft_strlen(str->sentence);
+	if (str->second <= 0)
+	{
+		str->remember = 1;
+		str->second = 0;
+	}
+	if (str->first < 0)
+	{
+		str->first = -str->first;
+		str->fless = 1;
+	}
+	if (str->fzero && str->fdot && str->second)
+		str->fzero = 0;
+	if (!str->first && !str->second && str->fdot && str->u_d)
+		str->fdot = 0;
+	//printf("first : %d\n", str->first);
+	//printf("sec : %d\n", str->second);
+	//printf("rem : %d\n", str->remember);
+	//printf("zero : %d\n", str->fzero);
+	//printf("dot : %d\n", str->fdot);
 }
 
 void	conv_for_X(t_type *str)
 {
-	str->d_i = va_arg(str->ap, int);
-	if (str->second < 0)
-		str->second = 0;
-	if (!str->d_i)
-		str->sentence = ft_strdup("0");
-	else
-		str->sentence = ft_itoa_base(str->d_i, "0123456789ABCDEF");
-	if (str->fdot && !str->second && str->remember && !str->d_i)
-	{
-		str->sentence = ft_strdup(" ");
-		str->fdot = 0;
-		str->fzero = 0;
-	}
-	if (str->sentence[0] == '-')
-	{
-		str->sentence = &str->sentence[1];
-		if (str->fdot || str->fzero)
-			str->first--;
-	}
+	str->u_d = va_arg(str->ap, unsigned int);
+	str->sentence = ft_uitoa_base(str->u_d, 16, "0123456789ABCDEF");
+	parse_flag(str);
 	print_for_X(str);
 }

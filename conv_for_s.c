@@ -1,74 +1,90 @@
 #include "ft_printf.h"
 #include "./libft/libft.h"
 
-void    print_for_s(t_type *str)
+static void	print(char c, int tmp, t_type *str)
 {
-    int tmp;
-    int i;
+	if (tmp > 0)
+		while (tmp--)
+			ft_putchar_fd(c, 1, str);
+}
 
-    i = 0;
-	tmp = 0;
-   	if (str->first && !str->second && !str->fzero)
-	{	
-		tmp = str->first - ft_strlen(str->sentence);
-		if (str->fless)
-		{
-			ft_putstr_fd(str->sentence, 1, str);
-			if (tmp > 0)
-				while (tmp--)
-					ft_putchar_fd(' ', 1, str);
-		}
-		else if (!str->fless)
-		{
-			if (tmp > 0)
-				while (tmp--)
-					ft_putchar_fd(' ', 1, str);
-			ft_putstr_fd(str->sentence, 1, str);
-		}
-	}
-    if (!str->first && str->fdot && str->second)
+static void	first(t_type *str)
+{
+	int tmp;
+
+	tmp = str->first - ft_strlen(str->sentence);
+	if (str->fless)
 	{
-		tmp = str->second;
-		if (tmp > 0 && !str->fless)
-		{	
-			while (tmp--)
-				ft_putchar_fd(str->sentence[i++], 1, str);
-		}
-	}
-    if (str->first && str->second && str->fdot)
-	{
-		if (str->fless)
-		{
-            tmp = str->second;
-			if (tmp > 0)
-                while (tmp--)
-                    ft_putchar_fd(str->sentence[i++], 1, str);
-            tmp = str->first - str->second;
-			if (tmp > 0)
-				while (tmp--)
-					ft_putchar_fd(' ', 1, str);
-		}
-		else if (!str->fless)
-		{
-			tmp = str->first - str->second;
-			if (tmp > 0)
-				while (tmp--)
-					ft_putchar_fd(' ', 1, str);
-			tmp = str->second;
-			if (tmp > 0)
-				while (tmp--)
-					ft_putchar_fd(str->sentence[i++], 1, str);
-		}
-	}
-	else if (!str->first && !str->second && !str->fdot)
 		ft_putstr_fd(str->sentence, 1, str);
+		print(' ', tmp, str);
+	}
+	else
+	{
+		print(' ', tmp, str);
+		ft_putstr_fd(str->sentence, 1, str);
+	}
+}
+
+static void	second(t_type *str)
+{
+	int tmp;
+
+	tmp = str->second;
+	if (tmp >= 0)
+			str->sentence = ft_substr(str->sentence, 0, tmp);
+	ft_putstr_fd(str->sentence, 1, str);
+}
+
+static void    print_for_s(t_type *str)
+{
+	int tmp;
+    if (!str->first && str->fdot && str->second)
+		second(str);
+	else if (str->first && !str->second && !str->fdot)
+		first(str);
+	else if (str->first && str->fdot && (str->second || str->remember))
+	{
+		tmp = str->first - str->second;
+		if (str->fless)
+		{	
+			second(str);
+			print(' ', tmp, str);
+		}
+		else
+		{
+			print(' ', tmp, str);
+			second(str);
+		}
+	}
+	else if (!str->first && !str->fdot && !str->second)
+		ft_putstr_fd(str->sentence, 1, str);
+}
+
+static void	parse_flag(t_type *str)
+{
+	if (str->fdot && str->second == 0)
+	{
+		str->remember = 1;
+		str->second = 0;
+	}
+	if (str->fdot && str->second < 0)
+		str->second = ft_strlen(str->sentence);
+	if (str->second && str->second > ft_strlen(str->sentence))
+		str->second = ft_strlen(str->sentence);
+	if (str->first < 0)
+	{
+		str->fless = 1;
+		str->first = -str->first;
+	}
 }
 
 void    conv_for_s(t_type *str)
 {
     if (!(str->sentence = va_arg(str->ap, char *)))
+	{	
+		free(str->sentence);
         str->sentence = ft_strdup("(null)");
-    if (str->second < 0 || (str->second > ft_strlen(str->sentence)))
-        str->second = ft_strlen(str->sentence);
+	}
+	parse_flag(str);
     print_for_s(str);
 }

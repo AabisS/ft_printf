@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:02:35 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/13 13:17:34 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/18 14:11:47 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ typedef struct	s_type
 	int			d_i;
 	unsigned int u_d;
 	char		*sentence;
+	char		*result;
 	char		car;
 	void		*p;
 	int			len;
 }				t_type;
 
-int		ft_printf(char *format, ...);
+int		ft_printf(const char *format, ...);
 void	initialize_all(t_type *str);
 int		find_flags(char *format, t_type *str);
 void	find_conversion(t_type *str, char *format);
