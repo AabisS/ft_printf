@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 11:30:39 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/19 15:32:53 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/19 21:27:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,16 @@ static void	parse_flag(t_type *str)
 {
 	if (str->fdot)
 		str->fless = 1;
+	if (str->first <= 0)
+	{
+		str->first = -str->first;
+		str->fless = 1;
+	}
 }
 
 void    conv_for_c(t_type *str)
 {
 	str->car = va_arg(str->ap, int);
+	parse_flag(str);
 	print_for_c(str);
 }

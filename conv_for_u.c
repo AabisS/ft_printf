@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/19 14:50:33 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/19 21:20:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ static void	print_for_u(t_type *str)
 		if (str->fless)
 		{
 			second(str);
-			print(' ', tmp, str);
+			!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
 		}
 		else
 		{
-			print(' ', tmp, str);
+			!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
 			second(str);
 		}
 	}

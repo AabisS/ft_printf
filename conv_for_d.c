@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/19 16:04:45 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/19 21:49:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	first(t_type *str)
 		!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
 	}
 	else
-	{
+	{	
 		!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
 		ft_putnbr_fd(str->d_i, 1, str);	
 	}
@@ -81,6 +81,11 @@ static void	print_for_d_i(t_type *str)
 		}
 		else
 		{
+			if (str->d_i < 0)
+			{
+				ft_putchar_fd('-', 1, str);
+				str->d_i *= -1;
+			}
 			str->fzero ? print('0', tmp, str) : print(' ', tmp, str);
 			second(str);
 		}
@@ -126,6 +131,11 @@ static void	parse_flag(t_type *str)
 		free(str->sentence);
 		str->sentence = ft_strdup("0");
 		str->fdot = 0;
+	}
+	if (str->first && str->fdot && str->second < ft_strlen(ft_itoa(str->d_i)))
+	{
+		str->fdot = 0;
+		str->second = 0;	
 	}
 	//printf("first : %d\n", str->first);
 	//printf("sec : %d\n", str->second);

@@ -94,12 +94,14 @@ static void	parse_flag(t_type *str)
 		str->sentence = ft_strdup(" ");
 	if (!str->second && !str->u_d && !str->fdot)
 		str->sentence = ft_strdup("0");
-	if (str->fzero && str->first && !str->second && !str->fdot)
+	if (str->fzero && str->first > 0 && !str->second && !str->fdot)
 	{
 		str->second = str->first;
 		str->first = 0;
 		str->fdot = 1;
 	}
+	if (str->fzero && str->first < 0 && !str->second && !str->fdot)
+		str->fzero = 0;
 	if (str->second && str->second < ft_strlen(str->sentence))
 		str->second = ft_strlen(str->sentence);
 	if (str->second <= 0)

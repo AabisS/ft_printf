@@ -20,12 +20,11 @@ int main(void)
 	//ft_printf("\nMon ft_printf return : %d\n", i);
 	//ft_printf("le printf return : %d\n", j);
 	
-	i = ft_printf("WYASg%-12c06ygRp:%0*X:1E", 'S', -10, 2147483647);
+	i = ft_printf("YHcJAsLf5y%19.0dONLw%12.*suFgO%0dscUIa", -2147483647, 0, "", 1747722940);
 	printf("\n");
-	j = printf("WYASg%-12c06ygRp:%0*X:1E", 'S', -10, 2147483647);
-
+	j = printf("YHcJAsLf5y%19.0dONLw%12.*suFgO%0dscUIa", -2147483647, 0, "", 1747722940);
 	//ft_printf("-- %d --\n", ft_printf("b1RbhVqT5\n"));
-	//printf("-- %d --\n", ft_printf("b1RbhVqT5\n"));
+	//printf("-- %d --\n", ft	printf("b1RbhVqT5\n"));
     //ft_printf("-- %d --\n", ft_printf("HMu\n"));
     //printf("-- %d --\n", ft_printf("HMu\n"));
     //ft_printf("-- %d --\n", ft_printf("%-8.*u%016X%0uL7Sg E7\n", -5, 0, -2147483647, 2147483647));
