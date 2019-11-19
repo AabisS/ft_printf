@@ -67,6 +67,8 @@ static void	parse_flag(t_type *str)
 		str->remember = 1;
 		str->second = 0;
 	}
+	if (str->second > ft_strlen(str->sentence) && str->fdot && str->first)
+		str->remember = 1;
 	if (str->fdot && str->second < 0)
 		str->second = ft_strlen(str->sentence);
 	if (str->second && str->second > ft_strlen(str->sentence))
@@ -76,6 +78,12 @@ static void	parse_flag(t_type *str)
 		str->fless = 1;
 		str->first = -str->first;
 	}
+	//printf("first : %d\n", str->first);
+	//printf("sec : %d\n", str->second);
+	//printf("rem : %d\n", str->remember);
+	//printf("zero : %d\n", str->fzero);
+	//printf("dot : %d\n", str->fdot);
+	//printf("less : %d\n", str->fless);
 }
 
 void    conv_for_s(t_type *str)

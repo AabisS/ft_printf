@@ -48,11 +48,11 @@ static void	first(t_type *str)
 	if (str->fless)
 	{
 		ft_putstr_fd(str->sentence, 1, str);
-		print(' ', tmp, str);
+		!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
 	}
 	else
 	{
-		print(' ', tmp, str);
+		!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
 		ft_putstr_fd(str->sentence, 1, str);	
 	}
 }
@@ -83,7 +83,10 @@ static void	print_for_X(t_type *str)
 		}
 	}
 	else if (!str->first && !str->second && !str->fdot)
+	{
 		ft_putstr_fd(str->sentence, 1, str);
+		printf("coucou\n");
+	}
 }
 
 static void	parse_flag(t_type *str)
@@ -116,11 +119,17 @@ static void	parse_flag(t_type *str)
 		str->fzero = 0;
 	if (!str->first && !str->second && str->fdot && str->u_d)
 		str->fdot = 0;
-	//printf("first : %d\n", str->first);
-	//printf("sec : %d\n", str->second);
-	//printf("rem : %d\n", str->remember);
-	//printf("zero : %d\n", str->fzero);
-	//printf("dot : %d\n", str->fdot);
+	if (str->fdot && str->fstar <= 0 && !str->u_d)
+	{
+		free(str->sentence);
+		str->sentence = ft_strdup("0");
+		str->fdot = 0;
+	}
+	printf("first : %d\n", str->first);
+	printf("sec : %d\n", str->second);
+	printf("rem : %d\n", str->remember);
+	printf("zero : %d\n", str->fzero);
+	printf("dot : %d\n", str->fdot);
 }
 
 void	conv_for_X(t_type *str)

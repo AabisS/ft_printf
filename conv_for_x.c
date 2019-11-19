@@ -48,11 +48,11 @@ static void	first(t_type *str)
 	if (str->fless)
 	{
 		ft_putstr_fd(str->sentence, 1, str);
-		print(' ', tmp, str);
+		!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
 	}
 	else
 	{
-		print(' ', tmp, str);
+		!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
 		ft_putstr_fd(str->sentence, 1, str);	
 	}
 }
@@ -116,6 +116,14 @@ static void	parse_flag(t_type *str)
 		str->fzero = 0;
 	if (!str->first && !str->second && str->fdot && str->u_d)
 		str->fdot = 0;
+	if (!str->first && !str->u_d && str->fdot && !str->second)
+		str->fzero = 1;
+	if (str->fdot && str->fstar <= 0 && !str->u_d)
+	{
+		free(str->sentence);
+		str->sentence = ft_strdup("0");
+		str->fdot = 0;
+	}
 }
 
 void	conv_for_x(t_type *str)

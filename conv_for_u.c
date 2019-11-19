@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_for_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/18 16:56:21 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/19 14:50:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static void	first(t_type *str)
 	if (str->fless)
 	{
 		ft_putstr_fd(str->sentence, 1, str);
-		print(' ', tmp, str);
+		!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
 	}
 	else
 	{
-		print(' ', tmp, str);
+		!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
 		ft_putstr_fd(str->sentence, 1, str);	
 	}
 }
@@ -88,7 +88,7 @@ static void	print_for_u(t_type *str)
 
 static void	parse_flag(t_type *str)
 {
-	if (str->fzero && str->fdot && str->second)
+	if (str->fzero && str->fdot && str->fstar >= 0)
 		str->fzero = 0;
 	if (str->fless && !str->first)
 		str->fless = 0;
@@ -116,6 +116,12 @@ static void	parse_flag(t_type *str)
 	}
 	if (!str->first && !str->second && str->fdot && str->u_d)
 		str->fdot = 0;
+	if (str->fdot && str->fstar <= 0 && !str->u_d)
+	{
+		free(str->sentence);
+		str->sentence = ft_strdup("0");
+		str->fdot = 0;
+	}
 	//printf("first : %d\n", str->first);
 	//printf("sec : %d\n", str->second);
 	//printf("rem : %d\n", str->remember);
