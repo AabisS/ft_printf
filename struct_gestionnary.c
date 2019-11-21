@@ -6,12 +6,19 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:15:28 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 11:52:01 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/21 12:39:32 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "./libft/libft.h"
+
+void	print(char c, int tmp, t_type *str)
+{
+	if (tmp > 0)
+		while (tmp--)
+			ft_putchar_fd(c, 1, str);
+}
 
 void	initialize_all(t_type *str)
 {

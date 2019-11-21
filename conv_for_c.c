@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   conv_for_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 11:30:39 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/19 21:27:58 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/21 13:11:26 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "./libft/libft.h"
 
-void    print_for_c(t_type *str)
+void		print_for_c(t_type *str)
 {
 	int tmp;
 
 	if (str->first)
-	{	
+	{
 		tmp = str->first - 1;
 		if (str->fless)
 		{
@@ -50,7 +50,7 @@ static void	parse_flag(t_type *str)
 	}
 }
 
-void    conv_for_c(t_type *str)
+void		conv_for_c(t_type *str)
 {
 	str->car = va_arg(str->ap, int);
 	parse_flag(str);

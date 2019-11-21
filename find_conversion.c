@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:45:59 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/18 14:11:40 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/21 13:31:41 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	find_conversion(t_type *str, char *format)
 	else if (format[0] == 'x')
 		conv_for_x(str);
 	else if (format[0] == 'X')
-		conv_for_X(str);
+		conv_for_xx(str);
 	else if (format[0] == 'c')
 		conv_for_c(str);
 	else if (format[0] == '%')

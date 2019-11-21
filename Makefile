@@ -6,7 +6,7 @@
 #    By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/15 10:53:19 by fmarckma          #+#    #+#              #
-#    Updated: 2019/11/21 12:35:19 by fmarckma         ###   ########.fr        #
+#    Updated: 2019/11/21 12:46:21 by fmarckma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = ft_printf.c \
        conv_for_xx.c \
        conv_for_p.c \
        conv_for_u.c \
+       algo_flag_parser.c \
 
 OBJS = ${SRCS:%.c=%.o}
 NAME = libftprintf.a
