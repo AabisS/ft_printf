@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 12:01:19 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/21 12:25:28 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	second(t_type *str)
 	int tmp;
 
 	if (str->fzero && str->fdot)
-		tmp = str->second - ft_strlen(ft_itoa(str->d_i));
+		tmp = (size_t)str->second - ft_strlen(ft_itoa(str->d_i));
 	else
-		tmp = str->second - ft_strlen(str->sentence);
+		tmp = (size_t)str->second - ft_strlen(str->sentence);
 	if (str->d_i < 0)
 	{
 		ft_putchar_fd('-', 1, str);
@@ -45,7 +45,7 @@ static void	first(t_type *str)
 {
 	int tmp;
 
-	tmp = str->first - ft_strlen(ft_itoa(str->d_i));
+	tmp = (size_t)str->first - ft_strlen(ft_itoa(str->d_i));
 	if (str->fless)
 	{
 		str->d_i ? ft_putnbr_fd(str->d_i, 1, str) : ft_putstr_fd(str->sentence, 1, str);
@@ -78,7 +78,7 @@ static void	print_for_d_i(t_type *str)
 		else if (str->d_i >= 0 && str->second)
 			tmp = str->first - str->second;
 		else
-			tmp = str->first - ft_strlen(ft_itoa(str->d_i));
+			tmp = (size_t)str->first - ft_strlen(ft_itoa(str->d_i));
 		if (str->fless)
 		{
 			second(str);
@@ -117,8 +117,8 @@ static void	parse_flag(t_type *str)
 		str->sentence = ft_strdup(" ");
 	if (str->sentence[0] == '-')
 		str->sentence = &str->sentence[1];
-	if (str->second && str->second < ft_strlen(str->sentence))
-		str->second = ft_strlen(str->sentence);
+	if (str->second && (size_t)str->second < ft_strlen(str->sentence))
+		str->second = (int)ft_strlen(str->sentence);
 	if (str->second <= 0)
 	{
 		str->remember = 1;
@@ -137,7 +137,7 @@ static void	parse_flag(t_type *str)
 		str->sentence = ft_strdup("0");
 		str->fdot = 0;
 	}
-	if (str->first && str->fdot && str->second < ft_strlen(ft_itoa(str->d_i)))
+	if (str->first && str->fdot && (size_t)str->second < ft_strlen(ft_itoa(str->d_i)))
 	{
 		str->fdot = 0;
 		str->second = 0;	

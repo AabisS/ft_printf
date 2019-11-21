@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 10:53:37 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 09:49:49 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/21 12:31:29 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_for_p(t_type *str)
 	tmp2 = 0;
 	if (str->first && !str->second && !str->fzero)
 	{	
-		tmp = str->first - (ft_strlen(str->sentence) + 2);
+		tmp = (size_t)str->first - (ft_strlen(str->sentence) + 2);
 		if (str->fless)
 		{
 			ft_putstr_fd("0x", 1, str);
@@ -31,7 +31,6 @@ void	print_for_p(t_type *str)
 				while (tmp--)
 					ft_putchar_fd(' ', 1, str);
 		}
-		//pour largeur positif
 		if (!str->fless)
 		{
 			if (tmp > 0)
@@ -41,10 +40,9 @@ void	print_for_p(t_type *str)
 			ft_putstr_fd(str->sentence, 1, str);
 		}
 	}
-	// si precision mais pas largeur
 	if (!str->first && (str->fdot || str->fzero) && str->second)
 	{
-		tmp = str->second - ft_strlen(str->sentence);
+		tmp = (size_t)str->second - ft_strlen(str->sentence);
 		if (tmp > 0 && !str->fless)
 		{	
 			ft_putstr_fd("0x", 1, str);
@@ -58,7 +56,7 @@ void	print_for_p(t_type *str)
 	}
 	else if (str->first && str->fzero && !str->second)
 	{
-		tmp = str->first - ft_strlen(str->sentence);
+		tmp = (size_t)str->first - ft_strlen(str->sentence);
 		if (tmp > 0 && !str->fless)
 		{	
 			ft_putstr_fd("0x", 1, str);
@@ -72,11 +70,11 @@ void	print_for_p(t_type *str)
 	}
 	if (str->first && str->second && str->fdot)
 	{
-		if (str->second > ft_strlen(str->sentence))
+		if ((size_t)str->second > ft_strlen(str->sentence))
 			tmp = str->first - str->second - 2;
 		else
-			tmp = str->first - ft_strlen(str->sentence) - 2;
-		tmp2 = str->second - ft_strlen(str->sentence);
+			tmp = (size_t)str->first - ft_strlen(str->sentence) - 2;
+		tmp2 = (size_t)str->second - ft_strlen(str->sentence);
 		if (str->fless)
 		{
 			if (tmp2 > 0)
@@ -122,7 +120,7 @@ void    conv_for_p(t_type *str)
 	str->p = va_arg(str->ap, void *);
 	str->sentence = ft_uitoa_base((uintmax_t)str->p, 16,  "0123456789abcdef");
 	if (str->second < 0)
-		str->second = ft_strlen(str->sentence);
+		str->second = (int)ft_strlen(str->sentence);
 	if (str->fdot && !str->second)
 	{
 		str->fdot = 0;

@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 12:02:50 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/21 12:32:22 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	second(t_type *str)
 	int tmp;
 
 	if (str->fzero && str->fdot)
-		tmp = str->second - ft_strlen(str->sentence);
+		tmp = (size_t)str->second - ft_strlen(str->sentence);
 	else
-		tmp = str->second - ft_strlen(str->sentence);
+		tmp = (size_t)str->second - ft_strlen(str->sentence);
 	if (str->u_d < 0)
 	{
 		print('0', tmp, str);
@@ -44,7 +44,7 @@ static void	first(t_type *str)
 {
 	int tmp;
 
-	tmp = str->first - ft_strlen(str->sentence);
+	tmp = (size_t)str->first - ft_strlen(str->sentence);
 	if (str->fless)
 	{
 		ft_putstr_fd(str->sentence, 1, str);
@@ -70,7 +70,7 @@ static void	print_for_u(t_type *str)
 		if (str->u_d >= 0 && str->second)
 			tmp = str->first - str->second;
 		else
-			tmp = str->first - ft_strlen(str->sentence);
+			tmp = (size_t)str->first - ft_strlen(str->sentence);
 		if (str->fless)
 		{
 			second(str);
@@ -104,8 +104,8 @@ static void	parse_flag(t_type *str)
 	}
 	if (str->fzero && str->first < 0 && !str->second && !str->fdot)
 		str->fzero = 0;
-	if (str->second && str->second < ft_strlen(str->sentence))
-		str->second = ft_strlen(str->sentence);
+	if (str->second && (size_t)str->second < ft_strlen(str->sentence))
+		str->second = (int)ft_strlen(str->sentence);
 	if (str->second <= 0)
 	{
 		str->remember = 1;

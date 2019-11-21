@@ -12,7 +12,7 @@ static void	first(t_type *str)
 {
 	int tmp;
 
-	tmp = str->first - ft_strlen(str->sentence);
+	tmp = (size_t)str->first - ft_strlen(str->sentence);
 	if (str->fless)
 	{
 		ft_putstr_fd(str->sentence, 1, str);
@@ -67,12 +67,12 @@ static void	parse_flag(t_type *str)
 		str->remember = 1;
 		str->second = 0;
 	}
-	if (str->second > ft_strlen(str->sentence) && str->fdot && str->first)
+	if ((size_t)str->second > ft_strlen(str->sentence) && str->fdot && str->first)
 		str->remember = 1;
 	if (str->fdot && str->second < 0)
-		str->second = ft_strlen(str->sentence);
-	if (str->second && str->second > ft_strlen(str->sentence))
-		str->second = ft_strlen(str->sentence);
+		str->second = (int)ft_strlen(str->sentence);
+	if (str->second && (size_t)str->second > ft_strlen(str->sentence))
+		str->second = (int)ft_strlen(str->sentence);
 	if (str->first < 0)
 	{
 		str->fless = 1;

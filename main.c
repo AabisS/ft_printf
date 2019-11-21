@@ -20,9 +20,9 @@ int main(void)
 	//ft_printf("\nMon ft_printf return : %d\n", i);
 	//ft_printf("le printf return : %d\n", j);
 	
-	i = ft_printf("%.*x et %d %-.5X%0.5xraju%%", -5, 0, -2147483648, -2147483648, 1978669357);
+	i = ft_printf("%*.4sDqg%.2i%%", -7, "8aqIdYEy4PsCn3ygCCUUBNV3fGtpDrJ2kQr", -2147483647);
 	printf("\n");
-	j = printf("%.*x et %d %-.5X%0.5xraju%%", -5, 0, -2147483648, -2147483648, 1978669357);
+	j = printf("%*.4sDqg%.2i%%", -7, "8aqIdYEy4PsCn3ygCCUUBNV3fGtpDrJ2kQr", -2147483647);
 	//ft_printf("-- %d --\n", ft_printf("b1RbhVqT5\n"));
 	//printf("-- %d --\n", ft	printf("b1RbhVqT5\n"));
     //ft_printf("-- %d --\n", ft_printf("HMu\n"));
