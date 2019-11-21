@@ -3,31 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   find_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:10:41 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/19 13:33:19 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/21 11:48:35 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "./libft/libft.h"
 
-int	is_charset(char *charset, char c)
-{
-	int i;
-
-	i = 0;
-	while (charset[i])
-		if (charset[i++] == c)
-			return (1);
-	return (0);
-}
-
 int	find_flags(char *format, t_type *str)
 {
 	int i;
-	char *charset;
 
 	i = 0;
 	while (format[i] == '-' || format[i] == '0')

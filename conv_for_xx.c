@@ -94,6 +94,8 @@ static void	parse_flag(t_type *str)
 		str->sentence = ft_strdup(" ");
 	if (!str->second && !str->u_d && !str->fdot)
 		str->sentence = ft_strdup("0");
+	if (str->first && str->fzero && str->fdot && str->second >= 0)
+		str->fzero = 0;
 	if (str->fzero && str->first > 0 && !str->second && !str->fdot)
 	{
 		str->second = str->first;
@@ -114,21 +116,16 @@ static void	parse_flag(t_type *str)
 		str->first = -str->first;
 		str->fless = 1;
 	}
-	if (str->fzero && str->fdot && str->second)
-		str->fzero = 0;
 	if (!str->first && !str->second && str->fdot && str->u_d)
 		str->fdot = 0;
-	if (str->fdot && str->fstar <= 0 && !str->u_d)
+	if (str->fdot && str->fstar < 0 && !str->u_d)
 	{
 		free(str->sentence);
 		str->sentence = ft_strdup("0");
 		str->fdot = 0;
 	}
-	//printf("first : %d\n", str->first);
-	//printf("sec : %d\n", str->second);
-	//printf("rem : %d\n", str->remember);
-	//printf("zero : %d\n", str->fzero);
-	//printf("dot : %d\n", str->fdot);
+	if (str->fless && str->fzero)
+		str->fzero = 0;
 }
 
 void	conv_for_X(t_type *str)

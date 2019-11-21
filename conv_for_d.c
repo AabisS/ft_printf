@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_for_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/19 21:49:46 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/21 12:01:19 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,18 @@ static void	first(t_type *str)
 	tmp = str->first - ft_strlen(ft_itoa(str->d_i));
 	if (str->fless)
 	{
-		ft_putnbr_fd(str->d_i, 1, str);
+		str->d_i ? ft_putnbr_fd(str->d_i, 1, str) : ft_putstr_fd(str->sentence, 1, str);
 		!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
 	}
 	else
 	{	
+		if (str->d_i < 0 && str->fzero)
+			ft_putchar_fd('-', 1, str);
 		!str->fzero ? print(' ', tmp, str) : print('0', tmp, str);
-		ft_putnbr_fd(str->d_i, 1, str);	
+		if (str->d_i < 0 && str->fzero)
+			str->d_i ? ft_putstr_fd(str->sentence, 1, str) : ft_putstr_fd(str->sentence, 1, str);
+		else
+			str->d_i ? ft_putnbr_fd(str->d_i, 1, str) : ft_putstr_fd(str->sentence, 1, str);
 	}
 }
 
@@ -81,7 +86,7 @@ static void	print_for_d_i(t_type *str)
 		}
 		else
 		{
-			if (str->d_i < 0)
+			if (str->d_i < 0 && str->fzero)
 			{
 				ft_putchar_fd('-', 1, str);
 				str->d_i *= -1;
@@ -102,13 +107,13 @@ static void	parse_flag(t_type *str)
 		str->fzero = 1;
 	if (str->fless && !str->first)
 		str->fless = 0;
-	if (str->fzero && str->first && !str->second && !str->fdot)
+	if (str->fzero && str->first > 0 && !str->second && !str->fdot)
 	{
 		str->second = str->first;
 		str->first = 0;
 		str->fdot = 1;
 	}
-	if (!str->second && !str->d_i)
+	if (str->fdot && !str->second && !str->d_i)
 		str->sentence = ft_strdup(" ");
 	if (str->sentence[0] == '-')
 		str->sentence = &str->sentence[1];
@@ -126,7 +131,7 @@ static void	parse_flag(t_type *str)
 	}
 	if (!str->first && !str->second && str->fdot && str->d_i)
 		str->fdot = 0;
-	if (str->fdot && str->fstar <= 0 && !str->d_i)
+	if (str->fdot && str->fstar < 0 && !str->d_i)
 	{
 		free(str->sentence);
 		str->sentence = ft_strdup("0");
@@ -137,11 +142,14 @@ static void	parse_flag(t_type *str)
 		str->fdot = 0;
 		str->second = 0;	
 	}
+	if (str->fless && str->fzero)
+		str->fzero = 0;
 	//printf("first : %d\n", str->first);
 	//printf("sec : %d\n", str->second);
 	//printf("rem : %d\n", str->remember);
 	//printf("zero : %d\n", str->fzero);
 	//printf("dot : %d\n", str->fdot);
+	//printf("less : %d\n", str->fless);
 }
 
 void	conv_for_d(t_type *str)

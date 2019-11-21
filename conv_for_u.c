@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_for_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/19 21:20:27 by marvin           ###   ########.fr       */
+/*   Updated: 2019/11/21 12:02:50 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,22 @@ static void	print_for_u(t_type *str)
 
 static void	parse_flag(t_type *str)
 {
-	if (str->fzero && str->fdot && str->fstar >= 0)
-		str->fzero = 0;
 	if (str->fless && !str->first)
 		str->fless = 0;
 	if (!str->second && !str->u_d && str->fdot)
 		str->sentence = ft_strdup(" ");
 	if (!str->second && !str->u_d && !str->fdot)
 		str->sentence = ft_strdup("0");
-	if (str->fzero && str->first && !str->second && !str->fdot)
+	if (str->first && str->fzero && str->fdot && str->second >= 0)
+		str->fzero = 0;
+	if (str->fzero && str->first > 0 && !str->second && !str->fdot)
 	{
 		str->second = str->first;
 		str->first = 0;
 		str->fdot = 1;
 	}
+	if (str->fzero && str->first < 0 && !str->second && !str->fdot)
+		str->fzero = 0;
 	if (str->second && str->second < ft_strlen(str->sentence))
 		str->second = ft_strlen(str->sentence);
 	if (str->second <= 0)
@@ -116,17 +118,16 @@ static void	parse_flag(t_type *str)
 	}
 	if (!str->first && !str->second && str->fdot && str->u_d)
 		str->fdot = 0;
-	if (str->fdot && str->fstar <= 0 && !str->u_d)
+	if (!str->first && !str->u_d && str->fdot && !str->second)
+		str->fzero = 1;
+	if (str->fdot && str->fstar < 0 && !str->u_d)
 	{
 		free(str->sentence);
 		str->sentence = ft_strdup("0");
 		str->fdot = 0;
 	}
-	//printf("first : %d\n", str->first);
-	//printf("sec : %d\n", str->second);
-	//printf("rem : %d\n", str->remember);
-	//printf("zero : %d\n", str->fzero);
-	//printf("dot : %d\n", str->fdot);
+	if (str->fless && str->fzero)
+		str->fzero = 0;
 }
 
 void	conv_for_u(t_type *str)
