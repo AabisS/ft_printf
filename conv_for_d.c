@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 13:20:40 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/22 10:07:51 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ void		print_for_d_i(t_type *str)
 		second(str);
 	else if (str->first && !str->second && !str->fdot)
 		first(str);
-	else if (!str->first && !str->second && !str->fdot)
-		ft_putnbr_fd(str->d_i, 1, str);
 	else if (str->first && str->fdot && (str->second || str->remember))
 		print_for_d_i2(str);
+	else if (!str->first && !str->second && !str->fdot)
+		ft_putnbr_fd(str->d_i, 1, str);
 }
 
 void		print_for_d_i2(t_type *str)

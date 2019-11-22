@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:02:35 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 13:53:11 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/22 11:05:04 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct		s_type
 int					ft_printf(const char *format, ...);
 void				initialize_all(t_type *str);
 int					find_flags(char *format, t_type *str);
+int					find_flags_follow(char *format, int i, t_type *str);
 void				find_conversion(t_type *str, char *format);
 void				conv_for_d(t_type *str);
 void				conv_for_s(t_type *str);
@@ -57,5 +58,12 @@ void				parse_flag_d(t_type *str);
 void				parse_flag_d2(t_type *str);
 void				print_for_d_i(t_type *str);
 void				print_for_d_i2(t_type *str);
+void				print_for_p(t_type *str);
+void				print_for_p2(t_type *str, int tmp, int tmp2);
+void				print_for_p3(t_type *str, int tmp, int tmp2);
+void				print_for_p4(t_type *str, int tmp, int tmp2);
+void				print_for_p5(t_type *str, int tmp, int tmp2);
+void				print_for_p6(t_type *str, int tmp, int tmp2);
+void				print_for_p7(t_type *str, int tmp, int tmp2);
 
 #endif

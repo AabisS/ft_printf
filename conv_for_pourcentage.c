@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:36:04 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 13:37:52 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/22 10:15:42 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,11 @@ void	print_for_pourcentage(t_type *str)
 		if (str->fless)
 		{
 			ft_putchar_fd('%', 1, str);
-			if (tmp > 0)
-				while (tmp--)
-					ft_putchar_fd(' ', 1, str);
+			print(' ', tmp, str);
 		}
-		if (!str->fless)
+		else if (!str->fless)
 		{
-			if (tmp > 0)
-				while (tmp--)
-					ft_putchar_fd(' ', 1, str);
+			str->fzero ? print('0', tmp, str) : print(' ', tmp, str);
 			ft_putchar_fd('%', 1, str);
 		}
 	}

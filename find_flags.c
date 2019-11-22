@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:10:41 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 11:48:35 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/22 11:06:48 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ int	find_flags(char *format, t_type *str)
 		while (ft_isdigit(format[i]))
 			i++;
 	}
-	else if (format[i] == '*')
+	return (find_flags_follow(format, i, str));
+}
+
+int	find_flags_follow(char *format, int i, t_type *str)
+{
+	if (format[i] == '*')
 	{
 		str->first = va_arg(str->ap, int);
 		i++;

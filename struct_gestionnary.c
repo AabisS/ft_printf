@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:15:28 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 12:39:32 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/22 10:56:32 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,48 @@ void	initialize_all(t_type *str)
 	str->car = 0;
 	str->p = NULL;
 	str->u_d = 0;
+}
+
+void	print_for_p5(t_type *str, int tmp, int tmp2)
+{
+	if ((size_t)str->second > ft_strlen(str->sentence))
+		tmp = str->first - str->second - 2;
+	else
+		tmp = (size_t)str->first - ft_strlen(str->sentence) - 2;
+	tmp2 = (size_t)str->second - ft_strlen(str->sentence);
+	print_for_p6(str, tmp, tmp2);
+}
+
+void	print_for_p6(t_type *str, int tmp, int tmp2)
+{
+	if (str->fless)
+	{
+		if (tmp2 > 0)
+		{
+			ft_putstr_fd("0x", 1, str);
+			while (tmp2--)
+				ft_putchar_fd('0', 1, str);
+			tmp2 = -1;
+		}
+		else if (tmp2 != -1)
+			ft_putstr_fd("0x", 1, str);
+		ft_putstr_fd(str->sentence, 1, str);
+		print(' ', tmp, str);
+	}
+	else if (!str->fless)
+		print_for_p7(str, tmp, tmp2);
+}
+
+void	print_for_p7(t_type *str, int tmp, int tmp2)
+{
+	print(' ', tmp2, str);
+	if (tmp2 > 0)
+	{
+		ft_putstr_fd("0x", 1, str);
+		print('0', tmp, str);
+		tmp2 = -1;
+	}
+	else if (tmp2 != -1)
+		ft_putstr_fd("0x", 1, str);
+	ft_putstr_fd(str->sentence, 1, str);
 }
