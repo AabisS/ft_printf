@@ -6,73 +6,85 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:26:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 13:28:11 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/22 16:57:00 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "./libft/libft.h"
 
-static void	first(t_type *str)
+static void	first(t_type *str, char *sentence)
 {
 	int tmp;
 
-	tmp = (size_t)str->first - ft_strlen(str->sentence);
+	tmp = (size_t)str->first - ft_strlen(sentence);
 	if (str->fless)
 	{
-		ft_putstr_fd(str->sentence, 1, str);
+		ft_putstr_fd(sentence, 1, str);
+		//free(sentence);
 		print(' ', tmp, str);
 	}
 	else
 	{
 		print(' ', tmp, str);
-		ft_putstr_fd(str->sentence, 1, str);
+		ft_putstr_fd(sentence, 1, str);
+		//if (sentence != NULL)
+		//	free(sentence);
 	}
 }
 
-static void	second(t_type *str)
+static void	second(t_type *str, char *sentence)
 {
 	int tmp;
 
 	tmp = str->second;
 	if (tmp >= 0)
-		str->sentence = ft_substr(str->sentence, 0, tmp);
-	ft_putstr_fd(str->sentence, 1, str);
+		sentence = ft_substr(sentence, 0, tmp);
+	ft_putstr_fd(sentence, 1, str);
+	//free(sentence);
+	//sentence = 0;
 }
 
-static void	print_for_s(t_type *str)
+static void	print_for_s(t_type *str, char *sentence)
 {
 	int tmp;
 
 	if (!str->first && str->fdot && str->second)
-		second(str);
+		second(str, sentence);
 	else if (str->first && !str->second && !str->fdot)
-		first(str);
+		first(str, sentence);
 	else if (str->first && str->fdot && (str->second || str->remember))
 	{
 		tmp = str->first - str->second;
 		if (str->fless)
 		{
-			second(str);
+			second(str, sentence);
 			print(' ', tmp, str);
 		}
 		else
 		{
 			print(' ', tmp, str);
-			second(str);
+			second(str, sentence);
 		}
 	}
 	else if (!str->first && !str->fdot && !str->second)
-		ft_putstr_fd(str->sentence, 1, str);
+		ft_putstr_fd(sentence, 1, str);
 }
 
 void		conv_for_s(t_type *str)
 {
-	if (!(str->sentence = va_arg(str->ap, char *)))
+	char *sentence;
+	int bool_free;
+
+	//sentence = malloc(sizeof(char));
+	bool_free = 0;
+	if (!(sentence = va_arg(str->ap, char *)))
 	{
-		free(str->sentence);
-		str->sentence = ft_strdup("(null)");
+		sentence = ft_strdup("(null)");
+		bool_free = 1;
 	}
-	parse_flag_s(str);
-	print_for_s(str);
+	parse_flag_s(str, sentence);
+	print_for_s(str, sentence);
+	if (bool_free)
+		free(sentence);
 }

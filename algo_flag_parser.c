@@ -6,27 +6,27 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:43:18 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 13:42:24 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/22 16:30:23 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "./libft/libft.h"
 
-void	parse_flag_s(t_type *str)
+void	parse_flag_s(t_type *str, char *sentence)
 {
 	if (str->fdot && str->second == 0)
 	{
 		str->remember = 1;
 		str->second = 0;
 	}
-	if ((size_t)str->second > ft_strlen(str->sentence) &&
+	if ((size_t)str->second > ft_strlen(sentence) &&
 	str->fdot && str->first)
 		str->remember = 1;
 	if (str->fdot && str->second < 0)
-		str->second = (int)ft_strlen(str->sentence);
-	if (str->second && (size_t)str->second > ft_strlen(str->sentence))
-		str->second = (int)ft_strlen(str->sentence);
+		str->second = (int)ft_strlen(sentence);
+	if (str->second && (size_t)str->second > ft_strlen(sentence))
+		str->second = (int)ft_strlen(sentence);
 	if (str->first < 0)
 	{
 		str->fless = 1;

@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:02:35 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/22 11:05:04 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/22 16:31:01 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void				conv_for_xx(t_type *str);
 void				conv_for_pourcentage(t_type *str);
 void				conv_for_u(t_type *str);
 void				print(char c, int tmp, t_type *str);
-void				parse_flag_s(t_type *str);
+void				parse_flag_s(t_type *str, char *sentence);
 void				parse_flag_x(t_type *str);
 void				parse_flag_x2(t_type *str);
 void				parse_flag_d(t_type *str);

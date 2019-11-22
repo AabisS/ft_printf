@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/22 10:07:51 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/22 16:50:52 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	second(t_type *str)
 		ft_putchar_fd('-', 1, str);
 		print('0', tmp, str);
 		ft_putstr_fd(str->sentence, 1, str);
+		//free(str->sentence);
 	}
 	else
 	{
@@ -99,9 +100,12 @@ void		print_for_d_i2(t_type *str)
 }
 
 void		conv_for_d(t_type *str)
-{
+{	
 	str->d_i = va_arg(str->ap, int);
+	//printf("sentence :%s:\n", str->sentence);
+	//free(str->sentence);
 	str->sentence = ft_itoa(str->d_i);
 	parse_flag_d(str);
 	print_for_d_i(str);
+	free(str->sentence);
 }
