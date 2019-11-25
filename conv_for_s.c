@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:26:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 12:45:42 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 12:59:56 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,13 @@ static void	second(t_type *str, char *sentence)
 
 	tmp = str->second;
 	if (tmp >= 0)
-		res = ft_substr(sentence, 0, tmp);
+	{
+		if (!(res = ft_substr(sentence, 0, tmp)))
+		{
+			str->err = 1;
+			return ;
+		}
+	}
 	(tmp >= 0) ? ft_putstr_fd(res, 1, str) : ft_putstr_fd(sentence, 1, str);
 	if (tmp >= 0)
 		free(res);
@@ -77,7 +83,11 @@ void		conv_for_s(t_type *str)
 	bool_free = 0;
 	if (!(sentence = va_arg(str->ap, char *)))
 	{
-		sentence = ft_strdup("(null)");
+		if (!(sentence = ft_strdup("(null)")))
+		{
+			str->err = 1;
+			return ;
+		}
 		bool_free = 1;
 	}
 	parse_flag_s(str, sentence);

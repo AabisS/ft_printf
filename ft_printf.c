@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:05:25 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 10:56:21 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:20:41 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	ft_printf(const char *format, ...)
 	i = -1;
 	va_start(str.ap, format);
 	str.len = 0;
+	str.err = 0;
 	while (format[++i] != 0)
 	{
 		if (format[i] != '%')
@@ -34,5 +35,5 @@ int	ft_printf(const char *format, ...)
 		}
 	}
 	va_end(str.ap);
-	return (str.len);
+	return ((str.err) ? -1 : str.len);
 }

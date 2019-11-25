@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:02:35 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 12:52:38 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:27:13 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_type
 	char			car;
 	void			*p;
 	int				len;
+	int				err;
 }					t_type;
 
 int					ft_printf(const char *format, ...);

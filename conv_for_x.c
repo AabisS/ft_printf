@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:29:52 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 12:22:21 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:02:11 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,11 @@ void		conv_for_x(t_type *str)
 	char *sentence;
 
 	str->u_d = va_arg(str->ap, unsigned int);
-	sentence = ft_uitoa_base(str->u_d, 16, "0123456789abcdef");
+	if (!(sentence = ft_uitoa_base(str->u_d, 16, "0123456789abcdef")))
+	{
+		str->err = 1;
+		return ;
+	}
 	sentence = parse_flag_x(str, sentence);
 	print_for_x(str, sentence);
 	free(sentence);

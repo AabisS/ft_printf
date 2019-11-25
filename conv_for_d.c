@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 12:44:07 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:27:30 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,17 @@ void		conv_for_d(t_type *str)
 
 	sentence = NULL;
 	str->d_i = va_arg(str->ap, int);
-	sentence = ft_itoa(str->d_i);
+	if (!(sentence = ft_itoa(str->d_i)))
+	{
+		str->err = 1;
+		return ;
+	}
 	cpy = sentence;
-	str->sentence = ft_strdup(sentence);
+	if (!(str->sentence = ft_strdup(sentence)))
+	{
+		str->err = 1;
+		return ;
+	}
 	sentence = parse_flag_d(str, sentence);
 	print_for_d_i(str, sentence);
 	free(str->sentence);

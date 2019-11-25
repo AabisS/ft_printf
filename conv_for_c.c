@@ -6,14 +6,14 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 11:30:39 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/21 13:11:26 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:25:01 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "./libft/libft.h"
 
-void		print_for_c(t_type *str)
+static void	print_for_c(t_type *str)
 {
 	int tmp;
 
