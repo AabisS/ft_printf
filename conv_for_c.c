@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 11:30:39 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 13:25:01 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 15:23:40 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ static void	print_for_c(t_type *str)
 
 static void	parse_flag(t_type *str)
 {
-	if (str->fdot)
-		str->fless = 1;
 	if (str->first <= 0)
 	{
 		str->first = -str->first;
