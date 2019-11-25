@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:43:18 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 11:41:52 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 12:52:27 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,10 @@ char	*parse_flag_x(t_type *str, char *sentence)
 		str->fzero = 0;
 	if (str->second && (size_t)str->second < ft_strlen(sentence))
 		str->second = (int)ft_strlen(sentence);
-	parse_flag_x2(str, sentence);
-	return (sentence);
+	return (parse_flag_x2(str, sentence));
 }
 
-void	parse_flag_x2(t_type *str, char *sentence)
+char	*parse_flag_x2(t_type *str, char *sentence)
 {
 	if (str->second <= 0)
 	{
@@ -88,6 +87,7 @@ void	parse_flag_x2(t_type *str, char *sentence)
 	}
 	if (str->fless && str->fzero)
 		str->fzero = 0;
+	return (sentence);
 }
 
 char	*parse_flag_d(t_type *str, char *sentence)
@@ -108,22 +108,21 @@ char	*parse_flag_d(t_type *str, char *sentence)
 	{
 		sentence[0] = ' ';
 		sentence[1] = 0;
-	}	
+	}
 	if (sentence[0] == '-')
 		sentence = &sentence[1];
-	if (str->second && (size_t)str->second < ft_strlen(sentence))
-		str->second = (int)ft_strlen(sentence);
 	if (str->second <= 0)
 	{
 		str->remember = 1;
 		str->second = 0;
 	}
-	parse_flag_d2(str, sentence);
-	return (sentence);
+	return (parse_flag_d2(str, sentence));
 }
 
-void	parse_flag_d2(t_type *str, char *sentence)
+char	*parse_flag_d2(t_type *str, char *sentence)
 {
+	if (str->second && (size_t)str->second < ft_strlen(sentence))
+		str->second = (int)ft_strlen(sentence);
 	if (str->first < 0)
 	{
 		str->first = -str->first;
@@ -145,4 +144,5 @@ void	parse_flag_d2(t_type *str, char *sentence)
 	}
 	if (str->fless && str->fzero)
 		str->fzero = 0;
+	return (sentence);
 }

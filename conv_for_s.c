@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:26:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 12:40:09 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 12:45:42 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static void	first(t_type *str, char *sentence)
 
 static void	second(t_type *str, char *sentence)
 {
-	int tmp;
-	char *res;
-	
+	int		tmp;
+	char	*res;
+
 	tmp = str->second;
 	if (tmp >= 0)
 		res = ft_substr(sentence, 0, tmp);
@@ -71,8 +71,8 @@ static void	print_for_s(t_type *str, char *sentence)
 
 void		conv_for_s(t_type *str)
 {
-	char *sentence;
-	int bool_free;
+	char	*sentence;
+	int		bool_free;
 
 	bool_free = 0;
 	if (!(sentence = va_arg(str->ap, char *)))

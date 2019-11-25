@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:07:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 12:40:11 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 12:44:07 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void		print_for_d_i2(t_type *str, char *sentence)
 }
 
 void		conv_for_d(t_type *str)
-{	
+{
 	char *sentence;
 	char *cpy;
 
