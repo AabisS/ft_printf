@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 17:35:44 by vsteyaer          #+#    #+#             */
-/*   Updated: 2019/11/21 13:55:23 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 12:03:21 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char			*ft_uitoa_base(uintmax_t n, int baselen, char *base)
 
 	i = 0;
 	len = ft_digitlen_base(n, baselen);
-	if (!(str = malloc(sizeof(char) * len + 1)))
+	if (!(str = malloc(sizeof(char) * len + 2)))
 		return (NULL);
 	if (n == 0)
 		return (ft_strcpy(str, "0"));

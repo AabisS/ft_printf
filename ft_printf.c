@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:05:25 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/22 16:18:39 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 10:56:21 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,24 @@
 
 int	ft_printf(const char *format, ...)
 {
-	t_type	*str;
+	t_type	str;
 	int		i;
 
 	i = -1;
-	str = malloc(sizeof(t_type));
-	va_start(str->ap, format);
-	str->len = 0;
+	va_start(str.ap, format);
+	str.len = 0;
 	while (format[++i] != 0)
 	{
 		if (format[i] != '%')
-			ft_putchar_fd(format[i], 1, str);
+			ft_putchar_fd(format[i], 1, &str);
 		else if (format[i] == '%')
 		{
 			i++;
-			initialize_all(str);
-			i += find_flags((char*)&format[i], str);
-			find_conversion(str, (char*)&format[i]);
+			initialize_all(&str);
+			i += find_flags((char*)&format[i], &str);
+			find_conversion(&str, (char*)&format[i]);
 		}
 	}
-	va_end(str->ap);
-	free(str);
-	return (i);
+	va_end(str.ap);
+	return (str.len);
 }

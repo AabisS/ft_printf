@@ -36,8 +36,9 @@ int main(void)
     //ft_printf("-- %d --\n", ft_printf("%1sy6bNm\n", "\n"));
     //printf("-- %d --\n", ft_printf("%1sy6bNm\n", "\n"));
 	
-	ft_printf("%0*i\n", 8, 0);
-	printf("%0*i\n", 8, 0);
+	printf("79xqe%*.2d%.3XRi%%%-3.4iwSZN%1.4XhtfVy", -3, 0, 0, 2147483647, -2147483647);
+	printf("\n");
+	ft_printf("79xqe%*.2d%.3XRi%%%-3.4iwSZN%1.4XhtfVy", -3, 0, 0, 2147483647, -2147483647);
 	
 	printf("\nMon ft_printf return : %d\n", i);
 	printf("le printf return : %d\n", j);

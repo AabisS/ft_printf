@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:02:35 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/22 16:31:01 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 12:22:15 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,24 @@ void				conv_for_pourcentage(t_type *str);
 void				conv_for_u(t_type *str);
 void				print(char c, int tmp, t_type *str);
 void				parse_flag_s(t_type *str, char *sentence);
-void				parse_flag_x(t_type *str);
-void				parse_flag_x2(t_type *str);
-void				parse_flag_d(t_type *str);
-void				parse_flag_d2(t_type *str);
-void				print_for_d_i(t_type *str);
-void				print_for_d_i2(t_type *str);
-void				print_for_p(t_type *str);
-void				print_for_p2(t_type *str, int tmp, int tmp2);
-void				print_for_p3(t_type *str, int tmp, int tmp2);
-void				print_for_p4(t_type *str, int tmp, int tmp2);
-void				print_for_p5(t_type *str, int tmp, int tmp2);
-void				print_for_p6(t_type *str, int tmp, int tmp2);
-void				print_for_p7(t_type *str, int tmp, int tmp2);
+char				*parse_flag_x(t_type *str, char *sentence);
+void				parse_flag_x2(t_type *str, char *sentence);
+char				*parse_flag_d(t_type *str, char *sentence);
+void				parse_flag_d2(t_type *str, char *sentence);
+void				print_for_d_i(t_type *str, char *sentence);
+void				print_for_d_i2(t_type *str, char *sentence);
+void				print_for_p(t_type *str, char *sentence);
+void				print_for_p2(t_type *str, int tmp, int tmp2,
+char *sentence);
+void				print_for_p3(t_type *str, int tmp, int tmp2,
+char *sentence);
+void				print_for_p4(t_type *str, int tmp, int tmp2,
+char *sentence);
+void				print_for_p5(t_type *str, int tmp, int tmp2,
+char *sentence);
+void				print_for_p6(t_type *str, int tmp, int tmp2,
+char *sentence);
+void				print_for_p7(t_type *str, int tmp, int tmp2,
+char *sentence);
 
 #endif

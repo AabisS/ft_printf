@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:26:57 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/22 16:57:00 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/25 12:40:09 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,26 @@ static void	first(t_type *str, char *sentence)
 	if (str->fless)
 	{
 		ft_putstr_fd(sentence, 1, str);
-		//free(sentence);
 		print(' ', tmp, str);
 	}
 	else
 	{
 		print(' ', tmp, str);
 		ft_putstr_fd(sentence, 1, str);
-		//if (sentence != NULL)
-		//	free(sentence);
 	}
 }
 
 static void	second(t_type *str, char *sentence)
 {
 	int tmp;
-
+	char *res;
+	
 	tmp = str->second;
 	if (tmp >= 0)
-		sentence = ft_substr(sentence, 0, tmp);
-	ft_putstr_fd(sentence, 1, str);
-	//free(sentence);
-	//sentence = 0;
+		res = ft_substr(sentence, 0, tmp);
+	(tmp >= 0) ? ft_putstr_fd(res, 1, str) : ft_putstr_fd(sentence, 1, str);
+	if (tmp >= 0)
+		free(res);
 }
 
 static void	print_for_s(t_type *str, char *sentence)
@@ -76,7 +74,6 @@ void		conv_for_s(t_type *str)
 	char *sentence;
 	int bool_free;
 
-	//sentence = malloc(sizeof(char));
 	bool_free = 0;
 	if (!(sentence = va_arg(str->ap, char *)))
 	{
