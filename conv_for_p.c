@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 10:53:37 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 12:24:52 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:50:55 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	print_for_p3(t_type *str, int tmp, int tmp2, char *sentence)
 	(void)tmp2;
 	if (str->first && str->fzero && !str->second)
 	{
-		tmp = (size_t)str->first - ft_strlen(sentence);
+		tmp = (size_t)str->first - ft_strlen(sentence) - 2;
 		if (tmp > 0 && !str->fless)
 		{
 			ft_putstr_fd("0x", 1, str);
@@ -95,14 +95,12 @@ void	conv_for_p(t_type *str)
 	char *sentence;
 
 	str->p = va_arg(str->ap, void *);
-	sentence = ft_uitoa_base((uintmax_t)str->p, 16, "0123456789abcdef");
-	if (str->second < 0)
-		str->second = (int)ft_strlen(sentence);
-	if (str->fdot && !str->second)
+	if (!(sentence = ft_uitoa_base((uintmax_t)str->p, 16, "0123456789abcdef")))
 	{
-		str->fdot = 0;
-		str->fzero = 0;
+		str->err = 1;
+		return ;
 	}
+	sentence = parse_flag_p(str, sentence);
 	print_for_p(str, sentence);
 	free(sentence);
 }

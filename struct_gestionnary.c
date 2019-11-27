@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:15:28 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 13:17:00 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:01:31 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ void	print_for_p6(t_type *str, int tmp, int tmp2, char *sentence)
 
 void	print_for_p7(t_type *str, int tmp, int tmp2, char *sentence)
 {
-	print(' ', tmp2, str);
-	if (tmp2 > 0)
+	print(' ', tmp, str);
+	if (tmp > 0)
 	{
 		ft_putstr_fd("0x", 1, str);
-		print('0', tmp, str);
-		tmp2 = -1;
+		print('0', tmp2, str);
+		tmp = -1;
 	}
-	else if (tmp2 != -1)
+	else if (tmp != -1)
 		ft_putstr_fd("0x", 1, str);
 	ft_putstr_fd(sentence, 1, str);
 }

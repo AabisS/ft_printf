@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:45:59 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 13:15:53 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:50:23 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,18 @@ void	find_conversion(t_type *str, char *format)
 		conv_for_p(str);
 	else if (format[0] == 'u')
 		conv_for_u(str);
+}
+
+char	*parse_flag_p(t_type *str, char *sentence)
+{
+	if (str->second < 0)
+		str->second = (int)ft_strlen(sentence);
+	if (str->fdot && !str->second)
+		sentence[0] = '\0';
+	if (str->fdot && !str->second)
+	{
+		str->fdot = 0;
+		str->fzero = 0;
+	}
+	return (sentence);
 }

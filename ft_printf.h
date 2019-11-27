@@ -6,7 +6,7 @@
 /*   By: fmarckma <fmarckma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:02:35 by fmarckma          #+#    #+#             */
-/*   Updated: 2019/11/25 13:27:13 by fmarckma         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:50:38 by fmarckma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void				print_for_p6(t_type *str, int tmp, int tmp2,
 char *sentence);
 void				print_for_p7(t_type *str, int tmp, int tmp2,
 char *sentence);
+char				*parse_flag_p(t_type *str, char *sentence);
 
 #endif
